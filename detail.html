@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="renderer" content="webkit">
+    <meta charset=utf-8">
+    <title>readfree.me-耶胡达·阿米亥诗选（上下）</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1, minimal-ui">
+    <meta name="description" content="基于豆瓣和Kindle,电子书推送和下载">
+    <meta name="keywords" content="Douban,Kindle,Duokan,eBook,Read,Free,Push,mobi,免费,阅读,豆瓣,电子书,多看,爱看豆,推送">
+    <meta name="author" content="guoqiao">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="baidu-site-verification" content="OWoHq3dtZcsoffFb"/>
+    <meta name="baidu_union_verify" content="ca74f9b82d82cbd51b01262367daf29b">
+    <meta property="qc:admins" content="246446362146255655"/>
+    <link rel="icon" href="/static/img/icon24.png">
+    <link rel="shortcut icon" href="/static/img/icon24.png">
+    <link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/chosen/1.1.0/chosen.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/messenger/1.4.0/css/messenger.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="http://cdn.staticfile.org/messenger/1.4.0/css/messenger-theme-future.css"/>
+    <link rel="stylesheet" type="text/css" type="text/css" href="/static/bootstrap/css/bootstrap.min.282663d1dc8a.css"/>
+    <link rel="stylesheet" type="text/css" type="text/css"
+          href="/static/bootstrap/css/bootstrap-responsive.min.365a247af403.css"/>
+    <link rel="stylesheet" type="text/css" type="text/css" href="/static/build/main.min.e6ed1114c00f.css"/>
+
+    <script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/underscore.js/1.7.0/underscore-min.js"></script>
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top" id="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/"></a>
+            <div class='nav-collapse collapse'>
+                <ul class="nav">
+                    <li class="nav-item "><a href="/shuffle/"><i class="icon-random icon-white"></i>推荐</a></li>
+                    <li class="nav-item "><a href="/psyche/"><i class="icon-heart icon-white"></i>精华</a></li>
+                    <li class="nav-item "><a href="/rank/7/"><i class="icon-fire icon-white"></i>热门</a></li>
+                    <li class="nav-item "><a href="/heros/7/"><i class="icon-list icon-white"></i>贡献</a></li>
+                    <li class="nav-item "><a href="/tags/"><i class="icon-tags icon-white"></i>分类</a></li>
+                </ul>
+                <form class="navbar-search"
+                      action="/search/" method="get">
+                    <input id="q" class="search-query" name="q" value="" placeholder="书名/作者/出版社/ISBN" type="text">
+                </form>
+                <ul class="nav pull-right">
+
+
+                    <li class="nav-item "><a href="/upload/"><i class="icon-upload icon-white"></i>上传</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-original-title="">
+                            <img class="img img-circle avatar-small" title="Woodman"
+                                 src="https://img1.doubanio.com/icon/u44966564-2.jpg"/>
+
+                            <span class="badge pro" title="限额100+上传0-下载0-推送0=剩余100">Pro</span>
+
+
+                            <b class="caret"></b>
+                            <ul id='account-dropdown' class="dropdown-menu">
+                                <li><a href="/notify/">
+                                    <i class="icon-envelope"></i> 通知
+
+                                </a></li>
+                                <li><a href="/people/44966564/wish">
+                                    <i class="icon-list"></i> 书单</a></li>
+                                <li><a href="/accounts/push/">
+                                    <i class="icon-cog"></i> 设置</a></li>
+
+                                <li><a href="/faq/"><i class="icon-question-sign"></i> 常见问题</a></li>
+                                <li>
+                                    <a href="#wechat-qrcode" role="button" data-toggle="modal">
+                                        <i class="icon-qrcode"></i> 微信公众号
+                                    </a>
+                                </li>
+                                <li><a href="/accounts/logout/?next=/book/1104709/">
+                                    <i class="icon-off"></i> 退出</a></li>
+                            </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="wechat-qrcode" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">readfree 微信公众号</h3>
+    </div>
+    <div class="modal-body">
+        <img width=150 height=150 src="/static/img/wechat.cff4aae8a25e.jpg" alt="wechat: readfree">
+        <p>支持搜索和推送本站书籍. 欢迎试用:)</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">知道啦:)</button>
+    </div>
+</div>
+<div id="lightbox">
+    <div id="pjax" class="container"></div>
+</div>
+<div class="loading-container">
+    <div class="loading"></div>
+    <div id="loading-text">loading..</div>
+</div>
+<div id="container" class='container'>
+    <div id="split" class="row">
+        <div class="span8 left">
+            <div class="margin-medium well">
+                <h2>
+                    <a class="link-search" target="_blank"
+                       href="http://www.amazon.cn/gp/search?index=books&keywords=耶胡达·阿米亥诗选（上下）&tag=readfreeme-23">
+                        耶胡达·阿米亥诗选（上下）
+                    </a>
+                </h2>
+                <p>
+
+                                           <span>
+                                           作者:
+                                           <a class="z-link-search" target="_blank"
+                                              href="http://www.amazon.cn/gp/search?index=books&keywords=[以] 耶胡达·阿米亥&tag=readfreeme-23">
+                                           <strong>[以] 耶胡达·阿米亥  </strong>
+                                           </a>
+                                           </span>
+
+
+                    <span>
+                                           译者:
+                                           <a class="z-link-search" target="_blank"
+                                              href="http://www.amazon.cn/gp/search?index=books&keywords=傅浩&tag=readfreeme-23">
+                                           <strong> 傅浩  </strong>
+                                           </a>
+                                           </span>
+
+
+                    <span>
+                                           <a class="z-link-search" target="_blank"
+                                              href="http://www.amazon.cn/gp/search?index=books&keywords=河北教育出版社&tag=readfreeme-23">
+                                           <small>河北教育出版社</small>
+                                           </a>
+                                           </span>
+
+                </p>
+                <div>
+
+                                           <span>
+                                           豆瓣:
+                                           <span class="badge badge-success">8.8</span>分
+                                           (<a href="http://book.douban.com/subject/1104709/" target='_blank'>
+                                           304人评价...
+                                           </a>)
+                                           </span>
+
+
+                    <a target='_blank' class="z-link-search btn btn-primary btn-long pull-right"
+                       href="http://www.amazon.cn/gp/search?index=books&keywords=耶胡达·阿米亥诗选（上下）&tag=readfreeme-23"
+                       title="购买正版...">
+                        <i class="icon-shopping-cart icon-white"></i> 支持正版
+                    </a>
+                    <div class='clearfix'></div>
+
+                </div>
+                <div class='book-summary'>
+                    <a target='_blank' class='pull-right z-link-search'
+                       href="http://www.amazon.cn/gp/search?index=books&keywords=耶胡达·阿米亥诗选（上下）&tag=readfreeme-23"
+                       title="购买正版...">
+                        <img class='book-cover img-rounded margin-medium'
+                             src="http://img6.douban.com/mpic/s2193715.jpg" alt="耶胡达·阿米亥诗选（上下）"/>
+                    </a>
+                    <pre>诗选共收抒情短诗一百八十首和一首自传长诗的节，选择自七种英译诗集：
+                                           1、《耶胡达·阿米亥的早期诗集》（The Early Books OF Yehuda Amichai）。哈洛德·希美尔、泰德·休斯、阿西娅·古特曼、耶胡达·阿米亥阿译，纽约：绵羊草坪出版社，1998。
+                                           2、《游记》，希、英双语版，露思·尼沃英译，纽约：绵羊草坪出版社，1986年。
+                                           3、《耶路撒冷诗篇》（Poens of Jerusalem），希、英双语版，耶胡达·阿米亥等英译，纽约：哈泼与娄出版社1988。
+                                           4、《时间》，耶胡达·阿米亥英译，纽约：哈泼与娄出版社，1979。
+                                           5、《阿门》，耶胡达2阿米亥与泰德·休斯英译，牛泽大学出版社，1978。
+                                           6、《大宁静：问与答》，格伦达·亚伯拉姆森与都铎·帕斐特英译，纽约：哈泼与娄出版社，1983。
+                                           7、《耶胡达·阿米亥诗选》，姹娜·布洛克与斯蒂芬·来切尔英译，伦敦：企鹅图书公司，1988。<div
+                                class='clearfix'></div></pre>
+                </div>
+                <h5>类似书籍</h5>
+                <ul class='unstyled inline well' id="similar-books">
+                    <li>
+                        <a href="/book/1104700/">
+                            <img class='book-cover img-rounded margin-medium'
+                                 src="http://img3.douban.com/mpic/s9816680.jpg" title="英国当代诗选" alt="英国当代诗选"/>
+                        </a>
+                    </li>
+                    <li>
+
+                        <a href="/book/1127913/">
+                            <img class='book-cover img-rounded margin-medium'
+                                 src="http://img5.douban.com/mpic/s1407326.jpg" title="彼得·霍恩诗选" alt="彼得·霍恩诗选"/>
+                        </a>
+
+                    </li>
+                    <li>
+
+                        <a href="/book/2064632/">
+                            <img class='book-cover img-rounded margin-medium'
+                                 src="https://img3.doubanio.com/mpic/s2386356.jpg" title="开·闭·开" alt="开·闭·开"/>
+                        </a>
+
+                    </li>
+                    <li>
+
+                        <a href="/book/1186348/">
+                            <img class='book-cover img-rounded margin-medium'
+                                 src="http://img6.douban.com/mpic/s2051621.jpg" title="谷川俊太郎诗选" alt="谷川俊太郎诗选"/>
+                        </a>
+
+                    </li>
+                </ul>
+                <ul class='unstyled inline well' id="book-tags">
+                    <li><a href="/tags/58739/">诗歌</a></li>
+                    <li><a href="/tags/1093207/">以色列</a></li>
+                    <li><a href="/tags/35099423/">耶胡达・阿米亥诗选</a></li>
+                    <li><a href="/tags/35099420/">耶胡达·阿米亥</a></li>
+                    <li><a href="/tags/201443/">诗</a></li>
+                    <li><a href="/tags/35099424/">以色列诗歌</a></li>
+                    <li><a href="/tags/199/">外国文学</a></li>
+                    <li><a href="/tags/7313740/">20世纪世界诗歌译丛</a></li>
+                </ul>
+                <a class="z-link-product" target="_blank"
+                   href="http://www.amazon.cn/gp/product/B010EJPW7C/?tag=readfreeme-23">
+                    <img class="img-full" src="/static/img/kindle-oasis.jpg" alt="Kindle Oasis">
+                </a>
+                <p></p>
+                <a class='btn btn-primary btn-long pull-right'
+                   href='/fileupload/1104709/'>
+                    <i class="icon-upload icon-white"></i>
+                    上传新版本
+                </a>
+                <h4>4个版本: </h4>
+                <ol class='unstyled'>
+                    <hr/>
+                    <li id=55871 pk=55871 ext=pdf>
+                        <div>
+                            <span class="badge badge">9.9M</span>
+                            <a class="badge badge" href="/edition/55871">20世纪世界诗歌译丛第1辑_耶胡达阿米亥诗选_下.pdf</a>
+                            <span class="label label-info">新版本</span>
+                            <ul class="unstyled pull-right inline">
+                                <li>
+                                    <a href="/edition/55871">
+                                        <small>
+                                            0条评论
+                                        </small>
+                                        <i class="icon-comment icon-white"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <small>
+                                2016-08-03 18:15:34
+                                , 上传者:
+                                <a href="/people/37129491/upld">Cambrian</a>
+
+                            </small>
+                        </div>
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button data-pk="55871" data-pushmail="woodman0604@kindle.cn"
+                                        class='pushmail-required book-push btn btn-mini btn-success'>
+                                    <i class="icon-share-alt icon-white"></i>推送
+                                    <span class="push-num">0</span>
+                                </button>
+                                <button class="btn btn-mini btn-success dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a data-pk="55871" data-pushmail="woodman0604@kindle.cn" class="book-push"
+                                           href="#">推送到 woodman0604@kindle.cn (默认)</a></li>
+                                    <li><a data-pk="55871" data-pushmail="bnpysse@kindle.cn" class="book-push" href="#">推送到
+                                        bnpysse@kindle.cn </a></li>
+                                    <li class="divider"></li>
+                                    <li><a target="_blank" href="/accounts/push/">设置</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
+                                <a title="20世纪世界诗歌译丛第1辑_耶胡达阿米亥诗选_下" class='book-down btn btn-mini btn-success'
+                                   href="/edition/55871/down">
+                                    <i class="icon-download-alt icon-white"></i>下载
+                                    <span>0</span>
+                                </a>
+                                <button class='book-wish btn btn-mini btn-success' title='点击切换收藏状态,收藏后可到我的书单查看'>
+                                    <i class="icon-star icon-white"></i>收藏
+                                    <span>2</span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                    <form class="form-inline talk-inline" action="/edition/55871?next=/book/1104709/#55871"
+                          method="post">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='LXXzqnuZcSs2XqtF9iczQ7Fm7PfBOdTQ'/>
+                        <input class="talk-short" type="text" name="text" pattern=".{1,80}" maxlength="80"
+                               placeholder="支持@功能,例如@admin 将召唤管理员,你也可以@任何人">
+                        <button class="btn" type="submit" title="发表评论">
+                            <i class="icon-comment"></i>
+                        </button>
+                    </form>
+                    <hr/>
+                    <li id=55870 pk=55870 ext=pdf>
+
+                        <div>
+                            <span class="badge badge">3.7M</span>
+                            <a class="badge badge" href="/edition/55870">20世纪世界诗歌译丛第1辑_耶胡达阿米亥诗选_上.pdf</a>
+
+
+                            <span class="label label-info">新版本</span>
+
+                            <ul class="unstyled pull-right inline">
+                                <li>
+                                    <a href="/edition/55870">
+                                        <small>
+                                            0条评论
+                                        </small>
+                                        <i class="icon-comment icon-white"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <small>
+                                2016-08-03 18:15:17
+
+                                , 上传者:
+                                <a href="/people/37129491/upld">Cambrian</a>
+
+                            </small>
+                        </div>
+                        <div class="btn-toolbar">
+
+
+                            <div class="btn-group">
+
+
+                                <button data-pk="55870" data-pushmail="woodman0604@kindle.cn"
+                                        class='pushmail-required book-push btn btn-mini btn-success'>
+                                    <i class="icon-share-alt icon-white"></i>推送
+                                    <span class="push-num">0</span>
+                                </button>
+
+                                <button class="btn btn-mini btn-success dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu">
+
+                                    <li><a data-pk="55870" data-pushmail="woodman0604@kindle.cn" class="book-push"
+                                           href="#">推送到 woodman0604@kindle.cn (默认)</a></li>
+
+                                    <li><a data-pk="55870" data-pushmail="bnpysse@kindle.cn" class="book-push" href="#">推送到
+                                        bnpysse@kindle.cn </a></li>
+
+                                    <li class="divider"></li>
+                                    <li><a target="_blank" href="/accounts/push/">设置</a></li>
+                                </ul>
+                            </div>
+
+
+                            <div class="btn-group">
+
+                                <a title="20世纪世界诗歌译丛第1辑_耶胡达阿米亥诗选_上" class='book-down btn btn-mini btn-success'
+                                   href="/edition/55870/down">
+                                    <i class="icon-download-alt icon-white"></i>下载
+                                    <span>0</span>
+                                </a>
+
+
+                                <button class='book-wish btn btn-mini btn-success' title='点击切换收藏状态,收藏后可到我的书单查看'>
+                                    <i class="icon-star icon-white"></i>收藏
+                                    <span>2</span>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <form class="form-inline talk-inline" action="/edition/55870?next=/book/1104709/#55870"
+                          method="post">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='LXXzqnuZcSs2XqtF9iczQ7Fm7PfBOdTQ'/>
+                        <input class="talk-short" type="text" name="text" pattern=".{1,80}" maxlength="80"
+                               placeholder="支持@功能,例如@admin 将召唤管理员,你也可以@任何人">
+                        <button class="btn" type="submit" title="发表评论">
+                            <i class="icon-comment"></i>
+                        </button>
+                    </form>
+                    <hr/>
+                    <li id=41935 pk=41935 ext=pdf>
+
+                        <div>
+                            <span class="badge badge">4.5M</span>
+                            <a class="badge badge" href="/edition/41935">《耶胡达·阿米亥诗选（下）》（以）耶胡达·阿米亥.pdf</a>
+
+
+                            <ul class="unstyled pull-right inline">
+                                <li>
+                                    <a href="/edition/41935">
+                                        <small>
+                                            0条评论
+                                        </small>
+                                        <i class="icon-comment icon-white"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <small>
+                                2015-09-03 13:32:20
+
+                                , 上传者:
+                                <a href="/people/77778568/upld">Anhedonia<span class="badge pro">Pro</span></a>
+
+                            </small>
+                        </div>
+                        <div class="btn-toolbar">
+
+
+                            <div class="btn-group">
+
+
+                                <button data-pk="41935" data-pushmail="woodman0604@kindle.cn"
+                                        class='pushmail-required book-push btn btn-mini btn-success'>
+                                    <i class="icon-share-alt icon-white"></i>推送
+                                    <span class="push-num">3</span>
+                                </button>
+
+                                <button class="btn btn-mini btn-success dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu">
+
+                                    <li><a data-pk="41935" data-pushmail="woodman0604@kindle.cn" class="book-push"
+                                           href="#">推送到 woodman0604@kindle.cn (默认)</a></li>
+
+                                    <li><a data-pk="41935" data-pushmail="bnpysse@kindle.cn" class="book-push" href="#">推送到
+                                        bnpysse@kindle.cn </a></li>
+
+                                    <li class="divider"></li>
+                                    <li><a target="_blank" href="/accounts/push/">设置</a></li>
+                                </ul>
+                            </div>
+
+
+                            <div class="btn-group">
+
+                                <a title="《耶胡达·阿米亥诗选（下）》（以）耶胡达·阿米亥" class='book-down btn btn-mini btn-success'
+                                   href="/edition/41935/down">
+                                    <i class="icon-download-alt icon-white"></i>下载
+                                    <span>20</span>
+                                </a>
+
+
+                                <button class='book-wish btn btn-mini btn-success' title='点击切换收藏状态,收藏后可到我的书单查看'>
+                                    <i class="icon-star icon-white"></i>收藏
+                                    <span>10</span>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <form class="form-inline talk-inline" action="/edition/41935?next=/book/1104709/#41935"
+                          method="post">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='LXXzqnuZcSs2XqtF9iczQ7Fm7PfBOdTQ'/>
+                        <input class="talk-short" type="text" name="text" pattern=".{1,80}" maxlength="80"
+                               placeholder="支持@功能,例如@admin 将召唤管理员,你也可以@任何人">
+                        <button class="btn" type="submit" title="发表评论">
+                            <i class="icon-comment"></i>
+                        </button>
+                    </form>
+                    <hr/>
+                    <li id=41934 pk=41934 ext=pdf>
+
+                        <div>
+                            <span class="badge badge">3.8M</span>
+                            <a class="badge badge" href="/edition/41934">《耶胡达·阿米亥诗选（上）》（以）耶胡达·阿米亥.pdf</a>
+
+
+                            <ul class="unstyled pull-right inline">
+                                <li>
+                                    <a href="/edition/41934">
+                                        <small>
+                                            0条评论
+                                        </small>
+                                        <i class="icon-comment icon-white"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <small>
+                                2015-09-03 13:31:24
+
+                                , 上传者:
+                                <a href="/people/77778568/upld">Anhedonia<span class="badge pro">Pro</span></a>
+
+                            </small>
+                        </div>
+                        <div class="btn-toolbar">
+
+
+                            <div class="btn-group">
+
+
+                                <button data-pk="41934" data-pushmail="woodman0604@kindle.cn"
+                                        class='pushmail-required book-push btn btn-mini btn-success'>
+                                    <i class="icon-share-alt icon-white"></i>推送
+                                    <span class="push-num">4</span>
+                                </button>
+
+                                <button class="btn btn-mini btn-success dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+
+                                <ul class="dropdown-menu">
+
+                                    <li><a data-pk="41934" data-pushmail="woodman0604@kindle.cn" class="book-push"
+                                           href="#">推送到 woodman0604@kindle.cn (默认)</a></li>
+
+                                    <li><a data-pk="41934" data-pushmail="bnpysse@kindle.cn" class="book-push" href="#">推送到
+                                        bnpysse@kindle.cn </a></li>
+
+                                    <li class="divider"></li>
+                                    <li><a target="_blank" href="/accounts/push/">设置</a></li>
+                                </ul>
+                            </div>
+
+
+                            <div class="btn-group">
+
+                                <a title="《耶胡达·阿米亥诗选（上）》（以）耶胡达·阿米亥" class='book-down btn btn-mini btn-success'
+                                   href="/edition/41934/down">
+                                    <i class="icon-download-alt icon-white"></i>下载
+                                    <span>17</span>
+                                </a>
+
+
+                                <button class='book-wish btn btn-mini btn-success' title='点击切换收藏状态,收藏后可到我的书单查看'>
+                                    <i class="icon-star icon-white"></i>收藏
+                                    <span>9</span>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </li>
+                    <form class="form-inline talk-inline" action="/edition/41934?next=/book/1104709/#41934"
+                          method="post">
+                        <input type='hidden' name='csrfmiddlewaretoken' value='LXXzqnuZcSs2XqtF9iczQ7Fm7PfBOdTQ'/>
+                        <input class="talk-short" type="text" name="text" pattern=".{1,80}" maxlength="80"
+                               placeholder="支持@功能,例如@admin 将召唤管理员,你也可以@任何人">
+                        <button class="btn" type="submit" title="发表评论">
+                            <i class="icon-comment"></i>
+                        </button>
+                    </form>
+                </ol>
+            </div>
+        </div>
+        <div class="span4 right">
+        </div>
+    </div>
+</div>
+<div id="footer">
+    <div class="container text-center">
+        <ul class='inline'>
+            <li><a target='_blank' href="http://www.weibo.com/readfreeme/">新浪微博</a></li>
+            <li><a target='_blank' href="http://www.douban.com/group/readfree.me/">豆瓣小组</a></li>
+            <li><a target='_blank' href="/wenli/">豆瓣插件</a></li>
+            <li><a target='_blank' href="/faq/">常见问题</a></li>
+            <li><a target='_blank' href="/contact/">联系站长</a></li>
+            <li><a href="/chat/">聊天室</a></li>
+            <li class="muted">QQ群: 312929250 验证信息: rf</li>
+        </ul>
+    </div>
+
+</div>
+<script src="http://cdn.staticfile.org/chosen/1.1.0/chosen.jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/jquery.pjax/1.9.2/jquery.pjax.min.js"></script>
+<script src="http://cdn.staticfile.org/messenger/1.4.0/js/messenger.min.js"></script>
+<script src="http://cdn.staticfile.org/messenger/1.4.0/js/messenger-theme-future.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.db7b0633195a.js"></script>
+<script type="text/javascript">
+    var g_url_back = '/book/1104709/';
+    var g_url_wish = '/edition/wish';
+    var g_url_push = '/edition/push';
+    var g_show_ads = 0;
+</script>
+<script src="/static/js/main.76c7235c3711.js"></script>
+<script type="text/javascript" name="baidu-tc-cerfication"
+        src="http://apps.bdimg.com/cloudaapi/lightapp.js#043d5ddd499ae59115b19c7a15b1c0b6"></script>
+<script type="text/javascript">
+    window.bd && bd._qdc && bd._qdc.init({app_id: 'ff18da941948ee15e3ed05ad'});
+</script>
+</body>
+</html>
